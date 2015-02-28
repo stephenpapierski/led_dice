@@ -1,0 +1,6 @@
+*.swp
+*.elf
+*.hex
+*.map
+*.o
+test_programs
