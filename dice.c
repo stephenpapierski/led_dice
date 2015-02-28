@@ -1,12 +1,13 @@
 /**
  * @file    dice.c
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
- * @date    27 February 2015
+ * @date    28 February 2015
  * @version 0.1
  */
 
 #define F_CPU 16000000
 #include <avr/io.h>
+#include <stdlib.h>
 #include <util/delay.h>
 #include <avr/interrupt.h>
 
@@ -23,36 +24,51 @@ int main(void){
     LINE_PORT |= PIEZO; //enable pull up resistor for PIEZO pin;
     sei();
     while(1){
-        reset_led_ddr();
-        reset_led_port();
-        LINE_DDR |= led_ddr[led_index];
-        LINE_PORT |= led_port[led_index];
-        //_delay_ms(100);
-
-        //reset_ddr();
-        //set_ddr(led_state);
-        //
-        //LINE_PORT |= LINE0;
+        set_led(); //update current led
+        if (roll_flag && roll_time < 2000){
+            led_state = rand_face();
+            roll_time++;
+        }else{
+            led_state = 0x00;
+            roll_flag = 0;
+        }
     }
 }
 
-void reset_led_ddr(){
-    LINE_DDR &= ~(LINE0 | LINE1 | LINE2 | LINE3);
+/**
+ * Turns off the current LED and turns on the one specified by led_index
+ */
+void set_led(){
+    cli(); //disable interrupts (messes with led states)
+    LINE_PORT = 0x00; //turn off current leds
+    LINE_DDR = 0x00; //set all pins as inputs
+    if (led_state & led_mask[led_index]){
+        LINE_DDR |= led_ddr[led_index]; //set led ddr
+        LINE_PORT |= led_port[led_index]; //set led port
+    }
+    sei(); //enable interrupts
 }
 
-void reset_led_port(){
-    LINE_PORT &= ~(LINE0 | LINE1 | LINE2 | LINE3);
+/**
+ * rand face
+ */
+unsigned char rand_face(){
+    int face = rand();
+    return led_faces[face];
 }
 
+/**
+ * Timer0 Overflow Interrupt, Timer0 set to Normal mode
+ */
 ISR(TIMER0_OVF_vect){
-    //cli();
-    //LINE_PORT ^= LINE0;
-    //_delay_ms(100);
-    //sei();
+    (led_index >= (NUM_LEDS - 1))? led_index = 0 : led_index++;
 }
 
+/**
+ * External PIEZO interrupt
+ */
 ISR(INT0_vect){
-    //do stuff
-    (led_index >= (NUM_LEDS - 1))? led_index = 0 : led_index++;
-    //roll_flag = 1;
+    roll_flag = 1;
+    roll_time = 0;
+    face_time = 0;
 }
