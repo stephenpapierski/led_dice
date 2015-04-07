@@ -6,4 +6,5 @@ test_programs
 *.o
 *.d
 *.bak
-*.b##
+*.b#*
+*.s#*

@@ -3,7 +3,7 @@
  * @file    dice.c
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-03-25 17:08:57
- * @edited  2015-04- 3 19:49:08
+ * @edited  2015-04- 7 16:41:08
  */
 
 #define F_CPU 16000000
@@ -31,6 +31,7 @@ int main(void){
     intr_init();
     piezo_init();
 
+    //enable interrupts
     sei();
     while(1){      
         led_update(); //update current led
