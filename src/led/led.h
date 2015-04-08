@@ -3,13 +3,16 @@
  * @file    led.h
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-04- 3 19:17:40
- * @edited  2015-04- 3 19:35:26
+ * @edited  2015-04- 8 01:28:08
  */
 
 #ifndef LED_H
 #define LED_H
 
 #include "../defs.h"
+
+extern volatile unsigned int led_index;
+extern unsigned char led_state;
 
 void led_update(void);
 unsigned char led_rand_face(void);

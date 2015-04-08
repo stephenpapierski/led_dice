@@ -3,7 +3,7 @@
  * @file    intr.c
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-04- 3 23:55:41
- * @edited  2015-04- 7 16:43:36
+ * @edited  2015-04- 8 01:28:17
  */
 
 #include <avr/io.h>
@@ -13,7 +13,7 @@
 #include "intr.h"
 
 //index of led being lit for charlie plexing
-volatile unsigned int led_index;
+//volatile unsigned int led_index;
 //set when the dice is "rolling"
 volatile unsigned short roll_flag;
 //how long the dice has been "rolling"

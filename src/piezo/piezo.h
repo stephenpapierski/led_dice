@@ -3,7 +3,7 @@
  * @file    piezo.h
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-04- 4 00:17:28
- * @edited  2015-04- 7 16:45:06
+ * @edited  2015-04- 8 01:28:22
  */
 
 #ifndef PIEZO_H
@@ -16,7 +16,7 @@
 #define PIEZO_LOW   !(PIEZO_PIN & PIEZO_P)
 
 //time before piezo state is set to idle in ms
-#define PIEZO_TIMEOUT   150
+#define PIEZO_TIMEOUT   50
 
 typedef enum { IDLE       =   0,    //piezo is idle
                ACTIVE     =   1,    //piezo is bouncing
