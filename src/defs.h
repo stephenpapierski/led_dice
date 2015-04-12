@@ -3,7 +3,7 @@
  * @file    defs.h
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-03-23 09:28:45
- * @edited  2015-04- 3 19:35:38
+ * @edited  2015-04- 9 00:49:55
  */
 
 #ifndef DEFS_H
@@ -18,6 +18,7 @@
 #define LINE1       1<<PORTB1
 #define LINE2       1<<PORTB4
 #define LINE3       1<<PORTB3
+#define LED_LINES   (LINE0 | LINE1 | LINE2 | LINE3)
 #define PIEZO       1<<PORTB2
 
 #endif //DEFS_H

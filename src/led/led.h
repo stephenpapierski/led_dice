@@ -3,7 +3,7 @@
  * @file    led.h
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-04- 3 19:17:40
- * @edited  2015-04- 8 01:28:08
+ * @edited  2015-04-11 21:35:02
  */
 
 #ifndef LED_H
@@ -14,7 +14,9 @@
 extern volatile unsigned int led_index;
 extern unsigned char led_state;
 
+void led_init(void);
 void led_update(void);
+void led_charlieplex_index(void);
 unsigned char led_rand_face(void);
 
 #define UL_LED_DDR  (LINE1 | LINE2)         //Upper Left LED DDR
@@ -50,6 +52,7 @@ unsigned char led_rand_face(void);
 #define FOUR    (UL_LED | UR_LED | BL_LED | BR_LED)
 #define FIVE    (UL_LED | UR_LED | MC_LED | BL_LED | BR_LED)
 #define SIX     (UL_LED | UR_LED | ML_LED | MR_LED | BL_LED | BR_LED)
+#define ALL_LED (ONE | SIX)
 
 #define NUM_LEDS        7
 #define ROLL_FACE_TIME  2000    //time each face will display while rolling

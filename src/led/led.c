@@ -3,7 +3,7 @@
  * @file    led.c
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-04- 3 19:17:37
- * @edited  2015-04- 8 01:28:13
+ * @edited  2015-04-11 21:34:38
  */
 
 #include <stdlib.h>
@@ -17,7 +17,7 @@
 /******************************************************************************/
 
 volatile unsigned int led_index;
-volatile unsigned char led_state;
+unsigned char led_state;
 
 //DDR direction setting for LEDs
 const unsigned char led_ddr[7] = {
@@ -64,18 +64,29 @@ const unsigned char led_faces[6] = {
 /* Library Functions                                                          */
 /******************************************************************************/
 
+void led_init(void){
+    led_state = BLANK;
+}
 /**
  * Turns off the current LED and turns on the one specified by led_index
  */
 void led_update(void){
     cli(); //disable interrupts (messes with led states)
-    LINE_PORT = 0x00; //turn off current leds
-    LINE_DDR = 0x00; //set all pins as inputs
+    LINE_PORT &= ~(LED_LINES); //turn off current leds
+    LINE_DDR &= ~(LED_LINES); //set all led pins as inputs
     if (led_state & led_mask[led_index]){
         LINE_DDR |= led_ddr[led_index]; //set led ddr
         LINE_PORT |= led_port[led_index]; //set led port
     }
     sei(); //enable interrupts
+}
+
+/**
+ * Steps led_index through all leds for charlieplexing
+ */
+void led_charlieplex_index(void){
+    //increment or reset led_index
+    (led_index >= (NUM_LEDS - 1))? led_index = 0 : led_index++;
 }
 
 /**

@@ -3,7 +3,7 @@
  * @file    dice.c
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-03-25 17:08:57
- * @edited  2015-04- 8 01:28:24
+ * @edited  2015-04-11 22:44:10
  */
 
 #define F_CPU 16000000
@@ -38,16 +38,26 @@ int main(void){
     tmr_init();
     intr_init();
     piezo_init();
+    led_init();
     dice_state = READY;
 
     //enable interrupts
     sei();
+
     while(1){      
-        led_update(); //update current led
-        led_state = TWO;
+        if ((piezo_get_state() == TAP) | (piezo_get_state() == ACTIVE)){
+            LINE_DDR |= (LINE0 | LINE1);
+            LINE_PORT |= LINE1;
+            roll_time = 0;
+        }else{
+            //led_state = BLANK;
+            LINE_PORT &= ~(LED_LINES);
+            LINE_DDR &= ~(LED_LINES);
+        }
         //led_state = led_rand_face();
         //if (roll_flag){
-        //    //led_state = led_rand_face();
+        //if (piezo_get_state() == TAP){
+        //    led_state = led_rand_face();
         //    roll_flag = 0;
         //}
         //if (roll_flag && (roll_time < 2000)){

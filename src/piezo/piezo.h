@@ -3,7 +3,7 @@
  * @file    piezo.h
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-04- 4 00:17:28
- * @edited  2015-04- 8 01:28:22
+ * @edited  2015-04-11 22:38:43
  */
 
 #ifndef PIEZO_H
@@ -24,7 +24,9 @@ typedef enum { IDLE       =   0,    //piezo is idle
 } EPiezoState;
 
 extern volatile unsigned int piezo_time;
+extern volatile unsigned int piezo_interrupt;
 
 void piezo_init(void);
+EPiezoState piezo_get_state(void);
 
 #endif //PIEZO_H

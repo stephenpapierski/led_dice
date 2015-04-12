@@ -3,7 +3,7 @@
  * @file    intr.c
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-04- 3 23:55:41
- * @edited  2015-04- 8 01:28:17
+ * @edited  2015-04-11 22:43:47
  */
 
 #include <avr/io.h>
@@ -30,10 +30,11 @@ void intr_init(void){
 }
 
 /**
- * Timer0 Overflow Interrupt, Timer0 set to Normal mode
+ * Timer0 Compare A Interrupt, Timer0 set to CTC, Triggers every 1 ms
  */
-ISR(TIMER0_OVF_vect){
-    (led_index >= (NUM_LEDS - 1))? led_index = 0 : led_index++;
+ISR(TIMER0_COMPA_vect){
+    led_charlieplex_index();
+    led_update();
 
     //increment counters
     roll_time++;
@@ -42,10 +43,19 @@ ISR(TIMER0_OVF_vect){
 }
 
 /**
+ * Timer0 Compare B Interrupt
+ */
+//ISR(TIMER0_COMPB_vect){
+//    //do nothing
+//}
+
+/**
  * External PIEZO interrupt
  */
 ISR(INT0_vect){
-    roll_flag = 1;
+    //roll_flag = 1;
+    piezo_interrupt = 1;
     roll_time = 0;
     face_time = 0;
+    //led_state = led_rand_face();
 }
