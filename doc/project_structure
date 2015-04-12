@@ -1,0 +1,30 @@
+.
+├── src
+│   ├── interrupts
+│   │   ├── intr.c
+│   │   └── intr.h
+│   ├── led
+│   │   ├── led.c
+│   │   └── led.h
+│   ├── piezo
+│   │   ├── piezo.c
+│   │   └── piezo.h
+│   ├── timer
+│   │   ├── tmr.c
+│   │   └── tmr.h
+│   ├── defs.h
+│   ├── dice.c
+│   └── myModules.h
+├── doc
+│   ├── eagle_pcb
+│   │   ├── Papierski_Dice_3.brd
+│   │   └── Papierski_Dice_3.sch
+│   ├── finite_state_machines
+│   │   ├── dice_UI_FSM.jpg
+│   │   └── piezo_debounce_FSM.jpg
+│   ├── acrylic_case.dwg
+│   ├── Atmel-2586-AVR-8-bit-Microcontroller-ATtiny25-ATtiny45-ATtiny85_Datasheet.pdf
+│   ├── project_notes.jpg
+│   └── project_structure
+├── Makefile
+└── README.md
