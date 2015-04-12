@@ -3,7 +3,7 @@
  * @file    led.c
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-04- 3 19:17:37
- * @edited  2015-04-11 21:34:38
+ * @edited  2015-04-12 01:29:11
  */
 
 #include <stdlib.h>
@@ -17,6 +17,8 @@
 /******************************************************************************/
 
 volatile unsigned int led_index;
+volatile unsigned int roll_time;
+volatile unsigned int face_time;
 unsigned char led_state;
 
 //DDR direction setting for LEDs

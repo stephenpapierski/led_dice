@@ -3,7 +3,7 @@
  * @file    piezo.h
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-04- 4 00:17:28
- * @edited  2015-04-11 22:38:43
+ * @edited  2015-04-12 01:29:14
  */
 
 #ifndef PIEZO_H
@@ -15,7 +15,7 @@
 #define PIEZO_P     (1<<PB2)
 #define PIEZO_LOW   !(PIEZO_PIN & PIEZO_P)
 
-//time before piezo state is set to idle in ms
+//time before piezo state is set to idle in ms (debounce time)
 #define PIEZO_TIMEOUT   50
 
 typedef enum { IDLE       =   0,    //piezo is idle
@@ -25,6 +25,7 @@ typedef enum { IDLE       =   0,    //piezo is idle
 
 extern volatile unsigned int piezo_time;
 extern volatile unsigned int piezo_interrupt;
+extern volatile unsigned int piezo_tap_time;
 
 void piezo_init(void);
 EPiezoState piezo_get_state(void);

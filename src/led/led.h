@@ -3,7 +3,7 @@
  * @file    led.h
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-04- 3 19:17:40
- * @edited  2015-04-11 21:35:02
+ * @edited  2015-04-12 00:37:48
  */
 
 #ifndef LED_H
@@ -12,6 +12,8 @@
 #include "../defs.h"
 
 extern volatile unsigned int led_index;
+extern volatile unsigned int roll_time;
+extern volatile unsigned int face_time;
 extern unsigned char led_state;
 
 void led_init(void);

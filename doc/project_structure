@@ -12,13 +12,16 @@
 │   ├── timer
 │   │   ├── tmr.c
 │   │   └── tmr.h
+│   ├── config.h
 │   ├── defs.h
-│   ├── dice.c
+│   ├── main.c
 │   └── myModules.h
 ├── doc
 │   ├── eagle_pcb
 │   │   ├── Papierski_Dice_3.brd
-│   │   └── Papierski_Dice_3.sch
+│   │   ├── Papierski_Dice_3.sch
+│   │   ├── board.png
+│   │   └── schematic.png
 │   ├── finite_state_machines
 │   │   ├── dice_UI_FSM.jpg
 │   │   └── piezo_debounce_FSM.jpg
