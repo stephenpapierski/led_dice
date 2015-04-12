@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="6.3">
+<eagle version="7.1.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -9,7 +9,7 @@
 <grid distance="0.05" unitdist="inch" unit="inch" style="dots" multiple="1" display="yes" altdistance="0.005" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
-<layer number="16" name="Bottom" color="1" fill="1" visible="no" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
 <layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
 <layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
@@ -424,6 +424,9 @@ design rules under a new name.</description>
 <autorouter>
 <pass name="Default">
 <param name="RoutingGrid" value="50mil"/>
+<param name="AutoGrid" value="1"/>
+<param name="Efforts" value="0"/>
+<param name="TopRouterVariant" value="1"/>
 <param name="tpViaShape" value="round"/>
 <param name="PrefDir.1" value="|"/>
 <param name="PrefDir.2" value="0"/>
@@ -551,31 +554,31 @@ design rules under a new name.</description>
 <attribute name="NAME" x="19.3675" y="25.24125" size="0.8128" layer="25" ratio="10"/>
 <attribute name="VALUE" x="16.51" y="24.4475" size="1.27" layer="27"/>
 </element>
-<element name="LED1" library="jpg_6v3" package="LED_PIRANHA_5MM_SNGL_SMD" value="" x="7.9375" y="30.1625" smashed="yes" rot="MR180">
+<element name="UR" library="jpg_6v3" package="LED_PIRANHA_5MM_SNGL_SMD" value="" x="7.9375" y="30.1625" smashed="yes" rot="MR180">
 <attribute name="NAME" x="6.35" y="26.035" size="0.8128" layer="22" rot="MR180"/>
 <attribute name="VALUE" x="13.0175" y="28.8925" size="1.016" layer="28" rot="MR180"/>
 </element>
-<element name="LED2" library="jpg_6v3" package="LED_PIRANHA_5MM_SNGL_SMD" value="" x="7.9375" y="5.3975" smashed="yes" rot="MR180">
+<element name="BR" library="jpg_6v3" package="LED_PIRANHA_5MM_SNGL_SMD" value="" x="7.9375" y="5.3975" smashed="yes" rot="MR180">
 <attribute name="NAME" x="4.60375" y="10.31875" size="0.8128" layer="22" rot="MR180"/>
 <attribute name="VALUE" x="13.0175" y="4.1275" size="1.016" layer="28" rot="MR180"/>
 </element>
-<element name="LED3" library="jpg_6v3" package="LED_PIRANHA_5MM_SNGL_SMD" value="" x="32.7025" y="17.78" smashed="yes" rot="MR0">
+<element name="ML" library="jpg_6v3" package="LED_PIRANHA_5MM_SNGL_SMD" value="" x="32.7025" y="17.78" smashed="yes" rot="MR0">
 <attribute name="NAME" x="33.9725" y="21.9075" size="0.8128" layer="22" rot="MR0"/>
 <attribute name="VALUE" x="27.6225" y="19.05" size="1.016" layer="28" rot="MR0"/>
 </element>
-<element name="LED4" library="jpg_6v3" package="LED_PIRANHA_5MM_SNGL_SMD" value="" x="32.7025" y="30.1625" smashed="yes" rot="MR0">
+<element name="UL" library="jpg_6v3" package="LED_PIRANHA_5MM_SNGL_SMD" value="" x="32.7025" y="30.1625" smashed="yes" rot="MR0">
 <attribute name="NAME" x="34.13125" y="25.24125" size="0.8128" layer="22" rot="MR0"/>
 <attribute name="VALUE" x="27.6225" y="31.4325" size="1.016" layer="28" rot="MR0"/>
 </element>
-<element name="LED5" library="jpg_6v3" package="LED_PIRANHA_5MM_SNGL_SMD" value="" x="32.7025" y="5.3975" smashed="yes" rot="MR270">
+<element name="BL" library="jpg_6v3" package="LED_PIRANHA_5MM_SNGL_SMD" value="" x="32.7025" y="5.3975" smashed="yes" rot="MR270">
 <attribute name="NAME" x="31.4325" y="10.31875" size="0.8128" layer="22" rot="MR180"/>
 <attribute name="VALUE" x="31.4325" y="0.3175" size="1.016" layer="28" rot="MR270"/>
 </element>
-<element name="LED6" library="jpg_6v3" package="LED_PIRANHA_5MM_SNGL_SMD" value="" x="20.32" y="17.78" smashed="yes" rot="MR0">
+<element name="MC" library="jpg_6v3" package="LED_PIRANHA_5MM_SNGL_SMD" value="" x="20.32" y="17.78" smashed="yes" rot="MR0">
 <attribute name="NAME" x="9.2075" y="21.9075" size="0.8128" layer="22" rot="MR0"/>
 <attribute name="VALUE" x="15.24" y="19.05" size="1.016" layer="28" rot="MR0"/>
 </element>
-<element name="LED7" library="jpg_6v3" package="LED_PIRANHA_5MM_SNGL_SMD" value="" x="7.9375" y="17.78" smashed="yes" rot="MR180">
+<element name="MR" library="jpg_6v3" package="LED_PIRANHA_5MM_SNGL_SMD" value="" x="7.9375" y="17.78" smashed="yes" rot="MR180">
 <attribute name="NAME" x="18.415" y="22.70125" size="0.8128" layer="22" rot="MR180"/>
 <attribute name="VALUE" x="13.0175" y="16.51" size="1.016" layer="28" rot="MR180"/>
 </element>
@@ -740,14 +743,14 @@ design rules under a new name.</description>
 <wire x1="16.51" y1="21.59" x2="20.32" y2="25.4" width="0.254" layer="16"/>
 </signal>
 <signal name="N$1">
-<contactref element="LED1" pad="A1"/>
-<contactref element="LED2" pad="K1"/>
-<contactref element="LED7" pad="A1"/>
+<contactref element="UR" pad="A1"/>
+<contactref element="BR" pad="K1"/>
+<contactref element="MR" pad="A1"/>
 <contactref element="R4" pad="P$2"/>
 <wire x1="3.81" y1="3.4925" x2="3.81" y2="20.32" width="0.254" layer="16"/>
 <wire x1="5.3975" y1="20.32" x2="3.81" y2="20.32" width="0.254" layer="16"/>
 <wire x1="3.81" y1="20.32" x2="3.81" y2="32.0675" width="0.254" layer="16"/>
-<contactref element="LED1" pad="A2"/>
+<contactref element="UR" pad="A2"/>
 <wire x1="5.3975" y1="32.7025" x2="10.4775" y2="32.7025" width="0.254" layer="16"/>
 <wire x1="10.4775" y1="32.7025" x2="13.6525" y2="32.7025" width="0.254" layer="16"/>
 <wire x1="3.81" y1="32.0675" x2="4.445" y2="32.7025" width="0.254" layer="16"/>
@@ -756,18 +759,18 @@ design rules under a new name.</description>
 <wire x1="4.445" y1="2.8575" x2="5.3975" y2="2.8575" width="0.254" layer="16"/>
 </signal>
 <signal name="N$6">
-<contactref element="LED3" pad="A1"/>
-<contactref element="LED4" pad="K1"/>
+<contactref element="ML" pad="A1"/>
+<contactref element="UL" pad="K1"/>
 <contactref element="R5" pad="P$2"/>
-<contactref element="LED2" pad="A1"/>
-<contactref element="LED1" pad="K1"/>
+<contactref element="BR" pad="A1"/>
+<contactref element="UR" pad="K1"/>
 <wire x1="35.2425" y1="33.655" x2="35.2425" y2="32.7025" width="0.254" layer="16"/>
 <wire x1="35.2425" y1="15.24" x2="36.83" y2="15.24" width="0.254" layer="16"/>
 <wire x1="36.83" y1="15.24" x2="36.83" y2="32.0675" width="0.254" layer="16"/>
 <wire x1="36.83" y1="32.0675" x2="36.195" y2="32.7025" width="0.254" layer="16"/>
 <wire x1="36.195" y1="32.7025" x2="35.2425" y2="32.7025" width="0.254" layer="16"/>
 <wire x1="34.6075" y1="34.29" x2="35.2425" y2="33.655" width="0.254" layer="16"/>
-<contactref element="LED1" pad="K2"/>
+<contactref element="UR" pad="K2"/>
 <wire x1="5.3975" y1="27.6225" x2="10.4775" y2="27.6225" width="0.254" layer="16"/>
 <wire x1="10.4775" y1="27.6225" x2="10.4775" y2="29.21" width="0.254" layer="16"/>
 <wire x1="16.51" y1="34.29" x2="30.1625" y2="34.29" width="0.254" layer="16"/>
@@ -783,20 +786,20 @@ design rules under a new name.</description>
 <wire x1="7.9375" y1="14.605" x2="7.9375" y2="21.9075" width="0.254" layer="16"/>
 <wire x1="7.9375" y1="21.9075" x2="5.3975" y2="24.4475" width="0.254" layer="16"/>
 <wire x1="5.3975" y1="24.4475" x2="5.3975" y2="27.6225" width="0.254" layer="16"/>
-<contactref element="LED4" pad="K2"/>
+<contactref element="UL" pad="K2"/>
 <wire x1="30.1625" y1="32.7025" x2="30.1625" y2="34.29" width="0.254" layer="16"/>
 </signal>
 <signal name="N$2">
-<contactref element="LED5" pad="A1"/>
-<contactref element="LED6" pad="K1"/>
+<contactref element="BL" pad="A1"/>
+<contactref element="MC" pad="K1"/>
 <contactref element="R6" pad="P$2"/>
-<contactref element="LED3" pad="K1"/>
-<contactref element="LED4" pad="A1"/>
+<contactref element="ML" pad="K1"/>
+<contactref element="UL" pad="A1"/>
 <wire x1="35.2425" y1="27.6225" x2="35.2425" y2="20.32" width="0.254" layer="16"/>
 <wire x1="35.2425" y1="20.32" x2="33.9725" y2="20.32" width="0.254" layer="16"/>
-<contactref element="LED3" pad="K2"/>
+<contactref element="ML" pad="K2"/>
 <wire x1="30.1625" y1="20.32" x2="32.7025" y2="20.32" width="0.254" layer="16"/>
-<contactref element="LED5" pad="A2"/>
+<contactref element="BL" pad="A2"/>
 <wire x1="32.7025" y1="20.32" x2="35.2425" y2="20.32" width="0.254" layer="16"/>
 <wire x1="35.2425" y1="7.9375" x2="35.2425" y2="2.8575" width="0.254" layer="16"/>
 <wire x1="22.86" y1="20.32" x2="23.8125" y2="20.32" width="0.254" layer="16"/>
@@ -804,7 +807,7 @@ design rules under a new name.</description>
 <wire x1="24.4475" y1="19.685" x2="28.575" y2="19.685" width="0.254" layer="16"/>
 <wire x1="28.575" y1="19.685" x2="29.21" y2="20.32" width="0.254" layer="16"/>
 <wire x1="29.21" y1="20.32" x2="30.1625" y2="20.32" width="0.254" layer="16"/>
-<contactref element="LED4" pad="A2"/>
+<contactref element="UL" pad="A2"/>
 <wire x1="35.2425" y1="27.6225" x2="30.1625" y2="27.6225" width="0.254" layer="16"/>
 <wire x1="30.1625" y1="27.6225" x2="28.8925" y2="27.6225" width="0.254" layer="16"/>
 <wire x1="28.8925" y1="27.6225" x2="27.6225" y2="28.8925" width="0.254" layer="16"/>
@@ -815,9 +818,9 @@ design rules under a new name.</description>
 <wire x1="32.7025" y1="9.525" x2="32.7025" y2="20.32" width="0.254" layer="16"/>
 </signal>
 <signal name="N$3">
-<contactref element="LED5" pad="K2"/>
-<contactref element="LED6" pad="A2"/>
-<contactref element="LED7" pad="K2"/>
+<contactref element="BL" pad="K2"/>
+<contactref element="MC" pad="A2"/>
+<contactref element="MR" pad="K2"/>
 <contactref element="R7" pad="2"/>
 <wire x1="29.5275" y1="1.27" x2="30.1625" y2="1.905" width="0.254" layer="16"/>
 <wire x1="30.1625" y1="1.905" x2="30.1625" y2="2.8575" width="0.254" layer="16"/>
@@ -828,7 +831,7 @@ design rules under a new name.</description>
 <wire x1="27.675" y1="5.3975" x2="27.6225" y2="5.45" width="0.254" layer="16"/>
 <wire x1="10.4775" y1="15.24" x2="17.78" y2="15.24" width="0.254" layer="16"/>
 <wire x1="7.62" y1="12.3825" x2="7.62" y2="3.175" width="0.254" layer="16"/>
-<contactref element="LED5" pad="K1"/>
+<contactref element="BL" pad="K1"/>
 <wire x1="30.1625" y1="7.9375" x2="30.1625" y2="5.3975" width="0.254" layer="16"/>
 <wire x1="30.1625" y1="5.3975" x2="30.1625" y2="2.8575" width="0.254" layer="16"/>
 <wire x1="7.62" y1="12.3825" x2="8.89" y2="13.6525" width="0.254" layer="16"/>
