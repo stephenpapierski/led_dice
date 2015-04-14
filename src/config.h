@@ -3,14 +3,14 @@
  * @file    config.h
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-04-11 23:36:49
- * @edited  2015-04-12 01:28:28
+ * @edited  2015-04-13 09:56:04
  */
 
 #ifndef CONFIG_H
 #define CONFIG_H
 
 //how close two taps must be to be a double tap (ms)
-#define DOUBLE_TAP_INTERVAL     250
+#define DOUBLE_TAP_INTERVAL     500
 
 //how long the dice "rolls" for (ms)
 #define ROLL_TIME               1000

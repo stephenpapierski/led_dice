@@ -3,7 +3,7 @@
  * @file    dice.c
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-03-25 17:08:57
- * @edited  2015-04-12 01:29:20
+ * @edited  2015-04-13 09:56:01
  */
 
 #define F_CPU 16000000
@@ -65,7 +65,7 @@ int main(void){
                 //check for input
                 if (piezo_get_state() == TAP){
                     piezo_tap_time = 0;
-                    dice_state = USER_INPUT;
+                    dice_state = ROLL1;
                 }else if (roll_time > DICE_TIMEOUT){
                     dice_state = SLEEP;
                 }else{
@@ -92,17 +92,8 @@ int main(void){
             case SLEEP:
                 //put dice to sleep
                 led_state = BLANK;
-                //power_down();
+                //TODO power_down();
                 dice_state = READY;
-                break;
-            case USER_INPUT:
-                if (piezo_get_state() == TAP){
-                    intr_disable_piezo();
-                    dice_state = ROLL2;
-                }else if (piezo_tap_time > DOUBLE_TAP_INTERVAL){
-                    intr_disable_piezo();
-                    dice_state = ROLL1;
-                }
                 break;
             case ROLL1:
                 //roll 1 dice
@@ -122,14 +113,16 @@ int main(void){
                 dice_state = ROLLING;
                 break;
             case ROLLING:
-                while (roll_time < ROLL_TIME){
-                    if (face_time >= FACE_TIME){
-                        led_state = led_rand_face();
-                        face_time = 0;
-                    }
+                if ((piezo_get_state() == TAP) && (piezo_tap_time < DOUBLE_TAP_INTERVAL)){
+                    intr_disable_piezo();
+                    dice_state = ROLL2;
+                }else if (roll_time > ROLL_TIME){
+                    intr_enable_piezo();
+                    dice_state = READY;
+                }else if (face_time >= FACE_TIME){
+                    led_state = led_rand_face();
+                    face_time = 0;
                 }
-                intr_enable_piezo();
-                dice_state = READY;
                 break;
         }
     }
