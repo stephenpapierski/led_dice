@@ -3,7 +3,7 @@
  * @file    intr.c
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-04- 3 23:55:41
- * @edited  2015-04-12 01:29:22
+ * @edited  2015-04-15 23:35:33
  */
 
 #include <avr/io.h>
@@ -25,8 +25,8 @@ volatile unsigned short roll_flag;
  * Initialize interrupts
  */
 void intr_init(void){
-    MCUCR |= 0x02; //sets Interrupt0 to trigger on falling edge
-    GIMSK |= 1<<INT0;//0x40; //external interupt request enable
+    //by default int0 set to low-level interrupt
+    GIMSK |= 1<<INT0; //external interrupt request enable
 }
 
 void intr_disable_piezo(void){

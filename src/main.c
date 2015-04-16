@@ -3,7 +3,7 @@
  * @file    dice.c
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-03-25 17:08:57
- * @edited  2015-04-13 09:56:01
+ * @edited  2015-04-15 23:34:39
  */
 
 #define F_CPU 16000000
@@ -37,7 +37,6 @@ int main(void){
     typedef enum { 
         READY,
         SLEEP,
-        USER_INPUT,
         ROLL1,
         ROLL2,
         ROLLING
@@ -84,15 +83,19 @@ int main(void){
                             }else{
                                 led_state = face1;
                             }
-
                             break;
                     }
                 }
                 break;
             case SLEEP:
-                //put dice to sleep
+                //clear LEDs
                 led_state = BLANK;
-                //TODO power_down();
+                led_update();
+
+                //shut down
+                power_down();
+
+                //return to ready state
                 dice_state = READY;
                 break;
             case ROLL1:
