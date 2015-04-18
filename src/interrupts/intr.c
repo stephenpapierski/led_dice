@@ -1,9 +1,9 @@
 /**
- * 
+ * Interrupt handlers and utilities
  * @file    intr.c
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-04- 3 23:55:41
- * @edited  2015-04-15 23:35:33
+ * @edited  2015-04-15 23:52:57
  */
 
 #include <avr/io.h>

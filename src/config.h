@@ -3,7 +3,7 @@
  * @file    config.h
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-04-11 23:36:49
- * @edited  2015-04-13 09:56:04
+ * @edited  2015-04-15 23:52:54
  */
 
 #ifndef CONFIG_H
