@@ -3,7 +3,7 @@
  * @file    intr.c
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-04- 3 23:55:41
- * @edited  2015-04-15 23:52:57
+ * @edited  2015-04-18 01:38:07
  */
 
 #include <avr/io.h>
@@ -12,18 +12,10 @@
 #include "../myModules.h"
 #include "intr.h"
 
-//index of led being lit for charlie plexing
-//volatile unsigned int led_index;
-//set when the dice is "rolling"
-volatile unsigned short roll_flag;
-//how long the dice has been "rolling"
-//unsigned long int roll_time;
-//how long current face has been displayed
-//unsigned long int face_time;
+/******************************************************************************/
+/* Library Functions                                                          */
+/******************************************************************************/
 
-/**
- * Initialize interrupts
- */
 void intr_init(void){
     //by default int0 set to low-level interrupt
     GIMSK |= 1<<INT0; //external interrupt request enable
@@ -31,19 +23,25 @@ void intr_init(void){
 
 void intr_disable_piezo(void){
     GIMSK &= ~(1<<INT0); //external interupt request disable 
-    piezo_interrupt = 0;
+    piezo_interrupt_flag(0);
 }
 
 void intr_enable_piezo(void){
     GIMSK |= 1<<INT0; //external interupt request enable
-    piezo_interrupt = 0;
+    piezo_interrupt_flag(0);
 }
+
+/******************************************************************************/
+/* Interrupt Handlers                                                         */
+/******************************************************************************/
 
 /**
  * Timer0 Compare A Interrupt, Timer0 set to CTC, Triggers every 1 ms
  */
 ISR(TIMER0_COMPA_vect){
+    //increment led index
     led_charlieplex_index();
+    //charlieplex set led
     led_update();
 
     //increment counters
@@ -54,15 +52,8 @@ ISR(TIMER0_COMPA_vect){
 }
 
 /**
- * Timer0 Compare B Interrupt
- */
-//ISR(TIMER0_COMPB_vect){
-//    //do nothing
-//}
-
-/**
  * External PIEZO interrupt
  */
 ISR(INT0_vect){
-    piezo_interrupt = 1;
+    piezo_interrupt_flag(1);
 }

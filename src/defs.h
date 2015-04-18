@@ -1,9 +1,9 @@
 /**
- *
+ * General IO definitions
  * @file    defs.h
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-03-23 09:28:45
- * @edited  2015-04- 9 00:49:55
+ * @edited  2015-04-18 01:24:12
  */
 
 #ifndef DEFS_H

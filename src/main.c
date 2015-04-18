@@ -3,7 +3,7 @@
  * @file    main.c
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-03-25 17:08:57
- * @edited  2015-04-18 00:38:01
+ * @edited  2015-04-18 01:46:03
  */
 
 #define F_CPU 16000000

@@ -1,9 +1,9 @@
 /**
- * 
+ * User interface and hardware control
  * @file    dice.c
  * @author  Stephen Papierski <stephenpapierski@gmail.com>
  * @date    2015-04-17 22:45:44
- * @edited  2015-04-18 00:39:29
+ * @edited  2015-04-18 01:25:32
  */
 
 #include "../myModules.h"
@@ -11,6 +11,9 @@
 
 #include "dice.h"
 
+/******************************************************************************/
+/* Library Functions                                                          */
+/******************************************************************************/
 
 EDiceState dice_state_update(EDiceState state_dice, EPiezoState state_piezo){
     EDiceState new_dice_state = state_dice;
@@ -57,7 +60,7 @@ void dice_hardware_update(EDiceState state_dice){
             //display current roll
             switch (num_faces){
                 case 1:
-                    led_state = face0;
+                    led_set_face(face0);
                     break;
                 case 2:
                     //display two faces
@@ -65,16 +68,16 @@ void dice_hardware_update(EDiceState state_dice){
                         face_time = 0;
                     }
                     if (face_time < DUAL_FACE_TIME){
-                        led_state = face0;
+                        led_set_face(face0);
                     }else{
-                        led_state = face1;
+                        led_set_face(face1);
                     }
                     break;
             }
             break;
         case SLEEP:
             //clear LEDs
-            led_state = BLANK;
+            led_set_face(BLANK);
             led_update();
 
             //shut down
@@ -98,10 +101,9 @@ void dice_hardware_update(EDiceState state_dice){
             break;
         case ROLLING:
             if (face_time >= FACE_TIME){
-                led_state = led_rand_face();
+                led_set_face(led_rand_face());
                 face_time = 0;
             }
-
             break;
     }
 }
